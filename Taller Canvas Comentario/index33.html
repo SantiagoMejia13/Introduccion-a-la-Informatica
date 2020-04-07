@@ -1,0 +1,55 @@
+<html>                                                             //Programa para crear filas y columnas de cuadrados con ciclos 
+<body>  
+	<canvas width="800" height="600" id="canvas"></canvas>         //Se especifica el tamaño de la pagina x, y
+
+	<script>
+
+		var canvas = document.getElementById('canvas');      //Variable canvas. Se asigna objeto "canvas" y dentro de este se obtiene el
+		var ctx = canvas.getContext('2d');                   //identificador getElementaryById
+                                                             //Variable ctx. Es el lienzo especificando que es en 2D
+		var colFondo = '#ffff00';                            //Variables como el color de fondo, color de linea, tamaño de liena
+		var colLinea = '#00ff00';
+		var tamLinea = 5;
+		var otroColor = '#00ffff';
+
+		function dibujarCaja(x, y, anchura, altura, tamanoLinea, colorFondo, colorLinea) {     //Se crea la función para dibijar la caja
+
+			ctx.fillStyle = colorFondo;
+			ctx.strokeStyle = colorLinea;
+			ctx.lineWidth = tamanoLinea;
+
+		    ctx.beginPath();                                  //Se inicia el trazado de la caja
+			ctx.moveTo(x,y);                                  //Se mueven a las coordenadas x y
+			ctx.lineTo(x+anchura,y);                          //Del eje x se traza una linea de tamaño determinado por el usuario hasta el
+			ctx.lineTo(x+anchura,y+altura);                   //eje y. Se traza una linea en el eje y.
+			ctx.lineTo(x,y+altura);                           //Se regresa la linea al principio para formar la caja
+			ctx.closePath();                                  //Se cierra el trazado de la caja
+			ctx.fill();
+			ctx.stroke();
+		}
+
+		var f = 1;                                            //Variable f para las filas
+		while (f <= 8) {                                      //Ciclo mientras f sea menor o igual a 8 ejecute
+			var c = 1;                                        //Variable c para las columnas
+			while (c <= 4) {                                  //Ciclo mientras c sea menor o igual a 4 ejecute
+
+				if (f == 7)                                   //Condicion en la fila 7 cambiar el color a todas las cajas de esa fila
+					dibujarCaja(c*60, f*60, 40, 40, 5, colFondo, colLinea);
+				else                                          //De lo contrario será el mismo color para todas las cajas
+					dibujarCaja(c*60, f*60, 40, 40, 5, otroColor, colLinea);					
+                                                                                    //Se multiplica x y por 60 para tener un espacio entre //cada caja
+				// Se dibujan 4 cajas por cada fila
+				// Las columnas van de 60 en 60
+				// Las filas van de 60 en 60
+				// Ancho = 40, Altura = 40 para todas
+				// Línea y colores iguales para todas menos para la fila 7 debido a la condicion
+
+				c = c + 1;                                     //Se le suma a la variable c para cerrar el ciclo
+			}
+			f = f + 1;                                         //Se le suma a la variable f para cerrar el ciclo 
+		}
+		
+	</script>
+	
+</body>
+</html>

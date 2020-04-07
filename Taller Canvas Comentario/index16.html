@@ -1,0 +1,41 @@
+<html>                                                       //Programa para dibujar un cuadrado
+<body>
+	<canvas width="800" height="600" id="canvas"></canvas>   //Se especifica el tamaño de la pagina x, y
+
+	<script>
+
+		var canvas = document.getElementById('canvas');   //Variable canvas. Se asigna objeto "canvas" y dentro de este se obtiene el 
+		var ctx = canvas.getContext('2d');                //identificador getElementaryById
+                                                          //Variable ctx. Es el lienzo especificando que es en 2D
+		var colFondo = '#ffff00';                         //Variables como el color de fondo, color de linea, tamaño de liena
+		var colLinea = '#00ff00';
+		var tamLinea = 5;
+
+		function dibujarCaja(x, y, anchura, altura, tamanoLinea, colorFondo, colorLinea) {   //Se crea la función para dibijar la caja
+
+			ctx.fillStyle = colorFondo;
+			ctx.strokeStyle = colorLinea;
+			ctx.lineWidth = tamanoLinea;
+
+			ctx.beginPath();                                  //Se inicia el trazado de la caja
+			ctx.moveTo(x,y);                                  //Se mueven a las coordenadas x y
+			ctx.lineTo(x+anchura,y);                          //Del eje x se traza una linea de tamaño determinado por el usuario hasta el
+			ctx.lineTo(x+anchura,y+altura);                   //eje y. Se traza una linea en el eje y.
+			ctx.lineTo(x,y+altura);                           //Se regresa la linea al principio para formar la caja
+			ctx.closePath();                                  //Se cierra el trazado de la caja
+			
+			ctx.fill();
+			ctx.stroke();
+		}
+
+		var col = 100;                                        //variable col para eje x
+		var fil = 80;                                         //variable fil para eje y
+		var deltac = 200;                                     //variable deltact para la anchura
+		var deltaf = 150;                                     //variable deltaf para la altura
+
+		dibujarCaja(col, fil, deltac, deltaf, tamLinea, colFondo, colLinea);             //se llama a la función para dibijar la caja
+		
+	</script>
+	
+</body>
+</html>

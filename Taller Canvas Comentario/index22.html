@@ -1,0 +1,51 @@
+<html>                                                      //Programa para crear una fila de cuadrados con ciclo
+<body>
+	<canvas width="800" height="600" id="canvas"></canvas>  //Se especifica el tamaño de la pagina x, y
+
+	<script>
+
+		var canvas = document.getElementById('canvas');      //Variable canvas. Se asigna objeto "canvas" y dentro de este se obtiene el
+		var ctx = canvas.getContext('2d');                   //identificador getElementaryById
+                                                             //Variable ctx. Es el lienzo especificando que es en 2D
+		var colFondo = '#ffff00';                            //Variables como el color de fondo, color de linea, tamaño de liena
+		var colLinea = '#00ff00';
+		var tamLinea = 5;
+
+		function dibujarCaja(x, y, anchura, altura, tamanoLinea, colorFondo, colorLinea) {     //Se crea la función para dibijar la caja
+
+			ctx.fillStyle = colorFondo;
+			ctx.strokeStyle = colorLinea;
+			ctx.lineWidth = tamanoLinea;
+
+		    ctx.beginPath();                                  //Se inicia el trazado de la caja
+			ctx.moveTo(x,y);                                  //Se mueven a las coordenadas x y
+			ctx.lineTo(x+anchura,y);                          //Del eje x se traza una linea de tamaño determinado por el usuario hasta el
+			ctx.lineTo(x+anchura,y+altura);                   //eje y. Se traza una linea en el eje y.
+			ctx.lineTo(x,y+altura);                           //Se regresa la linea al principio para formar la caja
+			ctx.closePath();                                  //Se cierra el trazado de la caja
+			ctx.fill();
+			ctx.stroke();
+		}
+
+		var columna = 100;                                  //variable columna para eje x
+		var fila = 80;                                      //variable fila para eje y
+		var ancho = 200;                                    
+		var alto = 150;                                     
+
+		var caja = 1;                                              //Se crea una variable caja. Aqui se va a repetir la funcion dibujarcaja.
+		while (caja <= 4) {                                        //Mientras la variable caja sea menor o igual a 4 se ejecuta el while.
+
+			dibujarCaja(caja*columna, fila, ancho, alto, tamLinea, colFondo, colLinea );   //se llama a la funcion. Se multiplica por caja 
+                                                                                           //para dar espacio entre cajas
+			// Cuando caja = 1    ==>   1 * columna = 100  
+			// Cuando caja = 2    ==>   2 * columna = 200
+			// Cuando caja = 3    ==>   3 * columna = 300
+			// Cuando caja = 4    ==>   4 * columna = 400
+			
+			caja = caja + 1;                                        //Se va sumando 1 para que llegue a 4 y poder terminar el ciclo.
+		}                                                           //Queda una fila de cuatro cajas
+		
+	</script>
+	
+</body>
+</html>
